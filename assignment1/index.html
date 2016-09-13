@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en" ng-app="LunchCheck">
+  <head>
+    <title>Lunch Checker</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="angular.min.js"></script>
+    <script src="app.js"></script>
+    <link rel="stylesheet" href="styles/bootstrap.min.css">
+    <style>
+      .error-message { font-size: 1.3em; font-weight: bold; color: red; }
+      .success-message { font-size: 1.3em; font-weight: bold; color: green;}
+      .hasError {
+        border-color: red;
+    }
+      .hasSuccess {
+        border-color: green;
+    }
+    </style>
+
+  </head>
+<body >
+   <div class="container" ng-controller="LunchCheckController">
+     <h1>Lunch Checker</h1>
+
+         <div class="form-group" ng-class="{'has-error': errors.Name }">
+             <input id="lunch-menu" type="text" ng-model="lunchMenuItems"
+             placeholder="list comma separated dishes you usually have for lunch"
+             class="form-control" ng-class="{true:'hasError',false:'hasSuccess'}[messageTypeError]" ng-change="checkIfTooMuchOnChange()" />
+         </div>
+         <div class="form-group">
+             <button class="btn btn-default" ng-click="checkIfTooMuch()">Check If Too Much</button>
+         </div>
+         <div class="form-group error-message" ng-if="messageTypeError">
+           {{displyMessage}}
+         </div>
+         <div class="form-group success-message" ng-if="messageTypeSuccess">
+           {{displyMessage}}
+         </div>
+   </div>
+
+</body>
+</html>
