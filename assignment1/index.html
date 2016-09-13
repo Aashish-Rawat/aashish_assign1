@@ -26,6 +26,8 @@
              <input id="lunch-menu" type="text" ng-model="lunchMenuItems"
              placeholder="list comma separated dishes you usually have for lunch"
              class="form-control" ng-class="{true:'hasError',false:'hasSuccess'}[messageTypeError]" ng-change="checkIfTooMuchOnChange()" />
+         
+             <span> ", , ," is not a valid item </span>
          </div>
          <div class="form-group">
              <button class="btn btn-default" ng-click="checkIfTooMuch()">Check If Too Much</button>
