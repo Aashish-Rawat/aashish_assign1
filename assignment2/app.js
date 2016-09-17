@@ -3,53 +3,33 @@
   angular.module('ShoppingListCheckOff',[])
   .controller('ToBuyShoppingCtrl', ToBuyShoppingCtrl)
   .controller('AlreadyBoughtShoppingCtrl', AlreadyBoughtShoppingCtrl)
-  .service('ShoppingListCheckOffService', ShoppingListCheckOffService)
+  .service('ShoppingListCheckOffService', ShoppingListCheckOffService);
 
 
   ToBuyShoppingCtrl.$inject = ['ShoppingListCheckOffService'];
-  function ToBuyShoppingCtrl(ShoppingListService) {
+  function ToBuyShoppingCtrl(ShoppingListCheckOffService) {
     var showList = this;
-    console.log("check ::: " showList.check);
-  showList.items = ShoppingListCheckOffService.getItems();
-
-  showList.removeItem = function (itemIndex) {
-
+    showList.items = ShoppingListCheckOffService.getItems();
+    showList.removeItem = function (itemIndex) {
     var CurrentObj =  showList.items[itemIndex];
-    //name: itemName1,quantity
     ShoppingListCheckOffService.addItem(CurrentObj.name, CurrentObj.quantity);
-    ShoppingListService.removeItem(itemIndex);
+    ShoppingListCheckOffService.removeItem(itemIndex);
   };
-    //itemAdder.itemName = "";
-    //itemAdder.itemQuantity = "";
 
-    //itemAdder.addItem = function () {
-     //ShoppingListCheckOffService.addItem(itemAdder.itemName, itemAdder.itemQuantity);
-   //}
   }
 
 
   AlreadyBoughtShoppingCtrl.$inject = ['ShoppingListCheckOffService'];
-  function AlreadyBoughtShoppingCtrl(ShoppingListService) {
-    var showList = this;
-
-    showList.items = ShoppingListCheckOffService.getItemsBuy();
-
-
+  function AlreadyBoughtShoppingCtrl(ShoppingListCheckOffService) {
+    var showList12 = this;
+    showList12.items = ShoppingListCheckOffService.getItemsBuy();
   }
-
-
-
-
-
-
-
-
 
 
 /**************************** service method start **************************/
   function ShoppingListCheckOffService() {
     var service = this;
- var check = 12;
+
     // List of shopping items
     var items = [{name: "itemName1",quantity: 12},
                 {name: "itemName2",quantity: 13},
