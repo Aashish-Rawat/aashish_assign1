@@ -1,0 +1,28 @@
+<div ng-hide='menu.length' class="emptyMessage"> Nothing found</div>
+
+<table ng-show='menu.length' class="table">
+<thead>
+  <tr>
+    <th>#</th>
+  	<th>Name</th>
+  	<th>Short</th>
+  	<th>Description</th>
+  	<th> </th>
+  	</tr>
+</thead>
+<tfoot>
+  <tr ng-repeat='menuItem in menu'>
+  	<td>{{$index+1}}</td>
+    <td>{{menuItem.name}}</td>
+    <td>{{menuItem.short_name}}</td>
+    <td>{{menuItem.description}}</td>
+    <td>
+      <button
+        class="btn btn-primary"
+        ng-click="onRemove({ index : $index});">
+        Don't want this one!
+      </button>
+    </td>
+  </tr>
+</tfoot>
+</table>
