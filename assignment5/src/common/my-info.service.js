@@ -21,7 +21,7 @@ function MyInfoService($http, ApiPath, $filter) {
   };
 
   service.checkMenuItem = function (user) {
-    return $http.get( ApiPath + $filter('uppercase')(user.favmenuitem) + '.json')
+    return $http.get( ApiPath + 'menu_items/' + $filter('uppercase')(user.favmenuitem) + '.json')
             .then(function (response) {
               service.menuItem = response.data;
               service.saved = true;
