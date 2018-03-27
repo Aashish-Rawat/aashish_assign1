@@ -7,9 +7,9 @@ angular.module('public')
 MyInfoController.$inject = ['MyInfoService'];
 function MyInfoController(MyInfoService) {
   var $ctrl = this;
-  $ctrl.saved = false;
-  $ctrl.user = {};
-  $ctrl.menuItem = {};
+  $ctrl.saved = MyInfoService.isSaved();
+  $ctrl.user = MyInfoService.getUserInfo();
+  $ctrl.menuItem = MyInfoService.getMenuItem();
 
   $ctrl.submit = function () {
     MyInfoService.saveUserInfo($ctrl.user);
